@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const markdown = require ('./markdown')
+const markdown = require ('./markdown')
 
 inquirer
   .prompt([
@@ -12,7 +12,7 @@ inquirer
 
     {
         type: 'input',
-        message: 'Give a description of what your project does',
+        message: 'Give a description of what your project does.',
         name: 'description',
     },
 
@@ -60,8 +60,8 @@ inquirer
     },
     
   ])
-  .then(() => {
-      fs.writeFile("READMETEST.MD", generateReadMe, (err) =>
+  .then((data) => {
+      fs.writeFile("READMETEST.MD", markdown.generateReadMe(data), (err) =>
       err ? console.log(err) : console.log('Success!')
     );
   });
